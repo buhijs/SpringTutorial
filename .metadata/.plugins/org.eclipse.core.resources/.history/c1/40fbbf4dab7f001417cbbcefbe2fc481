@@ -1,0 +1,21 @@
+package aspect;
+
+import org.aspectj.lang.annotation.Aspect;
+import org.aspectj.lang.annotation.Before;
+import org.aspectj.lang.annotation.Pointcut;
+
+@Aspect
+public class LoggingAspect {
+	@Before("execution(public * get*())")
+	public void LoggingAdvice(){
+		System.out.println("Advice run. Get Method called");
+	}
+	@Before("execution(public * get*())")
+	public void seconfAdvice(){
+		System.out.println("Second advice run. Get Method called");
+	}
+	
+	@Pointcut("execution(* get*())")
+	public void allGetters{}
+
+}

@@ -1,0 +1,5 @@
+package jdbcDemo.dao;
+
+public class SimpleJdbcDaoImpl {
+
+}

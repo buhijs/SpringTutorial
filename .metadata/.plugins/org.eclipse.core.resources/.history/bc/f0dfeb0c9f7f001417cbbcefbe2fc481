@@ -1,0 +1,7 @@
+package aspect;
+
+public class LoggingAspect {
+public void LoggingAdvice(){
+	System.out.println("Advice run. Get Method called");
+}
+}

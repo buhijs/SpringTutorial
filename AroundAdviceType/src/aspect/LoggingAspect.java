@@ -1,0 +1,53 @@
+package aspect;
+
+import org.aspectj.lang.JoinPoint;
+import org.aspectj.lang.ProceedingJoinPoint;
+import org.aspectj.lang.annotation.AfterReturning;
+import org.aspectj.lang.annotation.Around;
+import org.aspectj.lang.annotation.Aspect;
+import org.aspectj.lang.annotation.Before;
+import org.aspectj.lang.annotation.Pointcut;
+
+@Aspect
+public class LoggingAspect {
+	@Before("allGetters() && allCircleMethods()")
+	public void LoggingAdvice(){
+		System.out.println("Advice run. Get Method called");
+	}
+	@Before("allGetters()")
+	public void seconfAdvice(JoinPoint joinPoint){
+		System.out.println(joinPoint.toString());
+		System.out.println(joinPoint.getTarget());
+	}
+	
+	@AfterReturning (pointcut="args(name)", returning="returnString")
+	public void stringArgumenMethods(String name, String returnString){
+		System.out.println("A method with String arguments has been called: " + name +" The output value is:" + returnString);
+	}
+	
+	@Around("allGetters()")
+	public Object myAroundAdvice(ProceedingJoinPoint proceedingJointPoint){
+		Object returnValue=null;
+		
+		try{
+			System.out.println("Before advice");
+			returnValue=proceedingJointPoint.proceed();
+			System.out.println("After advice");
+			
+		}
+		catch(Throwable e){
+			System.out.println("After throwing");
+		}
+		System.out.println("After finally");
+		return returnValue;
+	}
+	@Pointcut("execution(* get*())")
+	public void allGetters(){}
+	
+	/*@Pointcut("execution(* * Service.model.Circle.*(..))")
+	public void allCircleMethods(){}
+	 									A possible way*/
+	
+	@Pointcut("within(Service.model.Circle)")
+	public void allCircleMethods(){}
+}

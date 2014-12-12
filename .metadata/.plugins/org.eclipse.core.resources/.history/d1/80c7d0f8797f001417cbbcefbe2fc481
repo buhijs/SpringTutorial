@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="
+        http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd"
+        xmlns:context="http://www.springframework.org/schema/context">
+       
+
+	<bean id="circle" class="Pack.Circle">
+	</bean>
+
+	<bean id="pointB" class="Pack.Point">
+		<property name="x" value="-20" />
+		<property name="y" value="0" />
+	</bean>
+	<bean id="pointC" class="Pack.Point">
+		<property name="x" value="20" />
+		<property name="y" value="0" />
+		 <context:annotation-config/>
+	</bean>
+</beans>

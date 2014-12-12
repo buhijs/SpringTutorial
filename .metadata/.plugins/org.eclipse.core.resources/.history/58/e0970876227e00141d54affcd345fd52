@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans>
+	<bean id="triangle" class="Pack.Triangle">
+		<property name="pointA" ref="zeroPoint" />
+		<property name="pointB" ref="point2">
+			<bean class="Pack.Point">
+				<property name="x" value="-20"></property>
+				<property name="y" value="0"></property>
+			</bean>
+		</property>
+		<property name="pointC" ref="point3">
+			<bean class="Pack.Point">
+				<property name="x" value="20"></property>
+				<property name="y" value="0"></property>
+			</bean>
+		</property>
+		</bean>
+
+		<bean id="zeroPoint" class="Pack.Point">
+			<property name="x" value="0"></property>
+			<property name="y" value="0"></property>
+		</bean>
+
+
+
+
+
+</beans>
